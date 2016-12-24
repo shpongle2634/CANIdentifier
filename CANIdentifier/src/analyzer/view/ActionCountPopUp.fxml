@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="240.0" prefWidth="480.0" style="-fx-background-color: lightgray;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="analyzer.view.ActionCountController">
+   <children>
+      <SplitPane dividerPositions="0.7226890756302521" orientation="VERTICAL" prefHeight="240.0" prefWidth="480.0">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="165.0" prefWidth="478.0">
+               <children>
+                  <Label layoutX="14.0" layoutY="14.0" prefHeight="29.0" prefWidth="161.0" text="Action Count Matcher" />
+                  <TextArea editable="false" layoutX="14.0" layoutY="51.0" prefHeight="109.0" prefWidth="450.0" text="본 Matcher 알고리즘은 로그 발생 횟수를 예측하여&#10;송신자를 찾습니다. 예로, Vol Up 버튼을 누르는 이벤트는&#10;Press-Release 두개의 로그를 발생시킵니다.&#10;버튼을 3회 누른 경우, 총 6 개의 Action이 예상됩니다." />
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="63.0" prefWidth="478.0">
+               <children>
+                  <Button fx:id="action_count_ok_btn" layoutX="289.0" layoutY="17.0" mnemonicParsing="false" onMouseClicked="#ok_btn_handler" prefHeight="29.0" prefWidth="80.0" text="확인" />
+                  <Button fx:id="action_count_cancel_btn" layoutX="384.0" layoutY="17.0" mnemonicParsing="false" onMouseClicked="#cancel_btn_handler" prefHeight="29.0" prefWidth="80.0" text="취소" />
+                  <Label alignment="CENTER" layoutX="14.0" layoutY="22.0" prefHeight="21.0" prefWidth="116.0" style="-fx-border-color: gray; -fx-border-radius: 4;" text="발생한 패킷 수" />
+                  <TextField fx:id="action_count_txt" layoutX="138.0" layoutY="17.0" prefHeight="29.0" prefWidth="132.0" />
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+   </children>
+</Pane>

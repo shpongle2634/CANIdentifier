@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="480.0" style="-fx-background-color: lightgray;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="analyzer.view.CrossController">
+   <children>
+      <SplitPane dividerPositions="0.877742946708464" orientation="VERTICAL" prefHeight="640.0" prefWidth="480.0">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="259.0" prefWidth="478.0">
+               <children>
+                  <Label layoutX="14.0" layoutY="14.0" prefHeight="29.0" prefWidth="161.0" text="Cross Matcher" />
+                  <TextArea editable="false" layoutX="14.0" layoutY="43.0" prefHeight="109.0" prefWidth="450.0" text="여러개의 Event 로그와 필터링 알고리즘을 적용합니다.&#10;찾고자하는 송신자가 시트밸트인 경우, 시트벨트 이벤트로그와&#10;다른 이벤트 로그 여러개와 필터링 합니다. &#10;&#10;여러 로그를 선택하여 확인 버튼을 입력합니다." />
+                  <ListView fx:id="cross_log_list" layoutX="14.0" layoutY="187.0" prefHeight="359.0" prefWidth="450.0" />
+                  <Label layoutX="14.0" layoutY="168.0" text="로그 리스트" />
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="439.0" prefWidth="478.0">
+               <children>
+                  <Button fx:id="cross_ok_btn" layoutX="289.0" layoutY="17.0" mnemonicParsing="false" onMouseClicked="#ok_btn_handler" prefHeight="29.0" prefWidth="80.0" text="확인" />
+                  <Button fx:id="cross_cancel_btn" layoutX="384.0" layoutY="17.0" mnemonicParsing="false" onMouseClicked="#cancel_btn_handler" prefHeight="29.0" prefWidth="80.0" text="취소" />
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+   </children>
+</Pane>

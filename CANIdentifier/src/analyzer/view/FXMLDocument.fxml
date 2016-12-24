@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.media.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" fx:id="main_pane" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="analyzer.view.FXMLDocumentController">
+   <children>
+      <SplitPane fx:id="main_split_pane" dividerPositions="0.29797979797979796" layoutY="30.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="690.0" prefWidth="1280.0">
+        <items>
+          <AnchorPane fx:id="split_left_pane" maxHeight="1.7976931348623157E308" maxWidth="-Infinity" minHeight="0.0" minWidth="0.0" prefHeight="690.0" prefWidth="240.0">
+               <children>
+                  <TabPane fx:id="tab_pane" prefHeight="690.0" prefWidth="240.0" tabClosingPolicy="UNAVAILABLE" tabMaxHeight="14.3">
+                    <tabs>
+                      <Tab fx:id="tab_navigator" closable="false" style="-fx-font-size: 12px;" text="Log Navigator">
+                        <content>
+                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <ListView fx:id="navi_listview" layoutY="24.0" prefHeight="472.0" prefWidth="240.0" />
+                                    <Button fx:id="sel_event_btn" layoutY="576.0" mnemonicParsing="false" onMouseClicked="#sel_event_btn_handler" prefHeight="29.0" prefWidth="240.0" text="Event 로그 선택" />
+                                    <Button fx:id="sel_noevent_btn" layoutY="496.0" mnemonicParsing="false" onMouseClicked="#sel_noevent_btn_handler" prefHeight="29.0" prefWidth="240.0" text="No Event 로그 지정" />
+                                    <Label alignment="TOP_CENTER" layoutX="4.0" prefHeight="19.0" prefWidth="240.0" text="로그 목록" />
+                                    <TextField fx:id="noevent_filename" editable="false" layoutY="525.0" prefHeight="29.0" prefWidth="240.0" promptText="File Name">
+                                       <font>
+                                          <Font size="11.0" />
+                                       </font>
+                                    </TextField>
+                                 </children>
+                              </AnchorPane>
+                        </content>
+                      </Tab>
+                      <Tab fx:id="tab_analysis" closable="false" style="-fx-font-size: 12px;" text="Analysis">
+                        <content>
+                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="653.0" prefWidth="240.0">
+                                 <children>
+                                    <TitledPane fx:id="analy_select_pane" animated="false" prefHeight="326.5" prefWidth="240.0" text="알고리즘 선택">
+                                      <content>
+                                        <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" prefHeight="297.0" prefWidth="199.0">
+                                             <children>
+                                                <ListView fx:id="analy_select_list" prefHeight="273.0" prefWidth="240.0" />
+                                                <Button fx:id="add_algorithm_btn" layoutX="-3.0" layoutY="269.0" mnemonicParsing="false" onMouseClicked="#add_algorithm_btn_handler" prefHeight="29.0" prefWidth="249.0" text="알고리즘 추가" />
+                                             </children>
+                                          </AnchorPane>
+                                      </content>
+                                    </TitledPane>
+                                    <TitledPane fx:id="analy_apply_pane" animated="false" layoutY="326.5" prefHeight="326.5" prefWidth="240.0" text="적용할 알고리즘">
+                                       <content>
+                                          <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" prefHeight="297.0" prefWidth="197.0">
+                                             <children>
+                                                <ListView fx:id="analy_apply_select" prefHeight="241.0" prefWidth="240.0" />
+                                                <Button fx:id="apply_algorithm_btn" layoutY="241.0" mnemonicParsing="false" onMouseClicked="#apply_algorithm_btn_handler" prefHeight="29.0" prefWidth="240.0" text="적용" />
+                                                <Button fx:id="delete_algorithm_btn" layoutX="-1.0" layoutY="269.0" mnemonicParsing="false" onMouseClicked="#delete_algorithm_btn_handler" prefHeight="29.0" prefWidth="240.0" text="삭제" />
+                                             </children>
+                                          </AnchorPane>
+                                       </content>
+                                    </TitledPane>
+                                 </children>
+                              </AnchorPane>
+                        </content>
+                      </Tab>
+                    </tabs>
+                  </TabPane>
+               </children>
+            </AnchorPane>
+          <AnchorPane fx:id="split_right_pane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0" prefHeight="690.0" prefWidth="960.0">
+               <children>
+                  <TextArea fx:id="log_textarea" editable="false" layoutY="417.0" prefHeight="273.0" prefWidth="1030.0" />
+                  <Pane layoutY="29.0" prefHeight="365.0" prefWidth="268.0" style="-fx-border-color: gray;">
+                     <children>
+                        <TextField alignment="TOP_CENTER" editable="false" layoutX="7.0" layoutY="8.0" prefHeight="25.0" prefWidth="74.0" text="로그 이름">
+                           <font>
+                              <Font size="12.0" />
+                           </font>
+                        </TextField>
+                        <TextField alignment="TOP_CENTER" editable="false" layoutX="7.0" layoutY="84.0" prefHeight="25.0" prefWidth="107.0" text="총 패킷 수">
+                           <font>
+                              <Font size="12.0" />
+                           </font>
+                        </TextField>
+                        <TextField fx:id="total_paceket" editable="false" layoutX="123.0" layoutY="85.0">
+                           <font>
+                              <Font size="12.0" />
+                           </font>
+                        </TextField>
+                        <TextField fx:id="event_filename" editable="false" layoutX="7.0" layoutY="39.0" prefHeight="23.0" prefWidth="253.0" promptText="File Name">
+                           <font>
+                              <Font size="11.0" />
+                           </font>
+                        </TextField>
+                        <TextField fx:id="total_sender" editable="false" layoutX="123.0" layoutY="124.0">
+                           <font>
+                              <Font size="12.0" />
+                           </font>
+                        </TextField>
+                        <TextField alignment="TOP_CENTER" editable="false" layoutX="7.0" layoutY="123.0" prefHeight="25.0" prefWidth="107.0" text="총 송신자 수">
+                           <font>
+                              <Font size="12.0" />
+                           </font>
+                        </TextField>
+                        <TextField alignment="TOP_CENTER" editable="false" layoutX="7.0" layoutY="160.0" prefHeight="25.0" prefWidth="107.0" text="로그 추출 시간">
+                           <font>
+                              <Font size="12.0" />
+                           </font>
+                        </TextField>
+                        <TextField fx:id="logging_time" editable="false" layoutX="123.0" layoutY="161.0">
+                           <font>
+                              <Font size="12.0" />
+                           </font>
+                        </TextField>
+                        <Button fx:id="filtering_btn" layoutX="45.0" layoutY="202.0" mnemonicParsing="false" onMouseClicked="#filtering_btn_handler" text="BroadCast 패킷 필터링" />
+                     </children>
+                  </Pane>
+                  <Pane layoutX="268.0" layoutY="29.0" prefHeight="365.0" prefWidth="262.0" style="-fx-border-color: gray;">
+                     <children>
+                        <TextField fx:id="result_packet" editable="false" layoutX="120.0" layoutY="39.0">
+                           <font>
+                              <Font size="12.0" />
+                           </font>
+                        </TextField>
+                        <TextField alignment="TOP_CENTER" editable="false" layoutX="4.0" layoutY="38.0" prefHeight="25.0" prefWidth="107.0" text="추출한 패킷 수">
+                           <font>
+                              <Font size="12.0" />
+                           </font>
+                        </TextField>
+                        <TextField alignment="TOP_CENTER" editable="false" layoutX="4.0" layoutY="73.0" prefHeight="25.0" prefWidth="107.0" text="패킷 추출률(%)">
+                           <font>
+                              <Font size="12.0" />
+                           </font>
+                        </TextField>
+                        <TextField fx:id="percent_packet" editable="false" layoutX="120.0" layoutY="74.0">
+                           <font>
+                              <Font size="12.0" />
+                           </font>
+                        </TextField>
+                        <TextField fx:id="result_sender" editable="false" layoutX="120.0" layoutY="125.0">
+                           <font>
+                              <Font size="12.0" />
+                           </font>
+                        </TextField>
+                        <TextField alignment="TOP_CENTER" editable="false" layoutX="4.0" layoutY="124.0" prefHeight="25.0" prefWidth="107.0" text="추출한 송신자 수">
+                           <font>
+                              <Font size="12.0" />
+                           </font>
+                        </TextField>
+                        <TextField fx:id="percent_sender" editable="false" layoutX="120.0" layoutY="159.0">
+                           <font>
+                              <Font size="12.0" />
+                           </font>
+                        </TextField>
+                        <TextField alignment="TOP_CENTER" editable="false" layoutX="4.0" layoutY="158.0" prefHeight="25.0" prefWidth="107.0" text="송신자 추출률(%)">
+                           <font>
+                              <Font size="12.0" />
+                           </font>
+                        </TextField>
+                     </children></Pane>
+                  <Label alignment="CENTER" layoutY="5.0" prefHeight="25.0" prefWidth="268.0" style="-fx-border-color: gray;" text="Event 로그 속성" />
+                  <Label alignment="CENTER" layoutX="268.0" layoutY="5.0" prefHeight="25.0" prefWidth="262.0" style="-fx-border-color: gray;" text="식별 정보" />
+                  <Label alignment="CENTER" layoutY="394.0" prefHeight="25.0" prefWidth="1030.0" style="-fx-border-color: gray;" text="추출 로그" />
+                  <LineChart fx:id="linechart" layoutX="530.0" layoutY="7.0" prefHeight="387.0" prefWidth="498.0">
+                    <xAxis>
+                      <CategoryAxis label="송신자 추출률(%)" side="BOTTOM" fx:id="xaxis" />
+                    </xAxis>
+                    <yAxis>
+                      <NumberAxis fx:id="yaxis" autoRanging="false" minorTickLength="0.0" side="LEFT" />
+                    </yAxis>
+                  </LineChart>
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+      <MenuBar fx:id="menubar" layoutY="6.0" prefHeight="30.0" prefWidth="1280.0">
+        <menus>
+          <Menu fx:id="menu_file" mnemonicParsing="false" text="File">
+            <items>
+              <MenuItem fx:id="menu_close" mnemonicParsing="false" onAction="#close_action" text="Close" />
+            </items>
+          </Menu>
+          <Menu fx:id="menu_help" mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem mnemonicParsing="false" text="About" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+   </children>
+</AnchorPane>
